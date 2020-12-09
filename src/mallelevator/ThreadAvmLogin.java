@@ -1,4 +1,4 @@
-package avmasansor;
+package mallelevator;
 
 public class ThreadAvmLogin extends Thread {
 

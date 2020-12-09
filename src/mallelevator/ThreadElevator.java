@@ -1,9 +1,9 @@
-package avmasansor;
+package mallelevator;
 
 import java.util.LinkedList;
 
-import avmasansor.Elevator.Direction;
-import avmasansor.Elevator.Mode;
+import mallelevator.Elevator.Direction;
+import mallelevator.Elevator.Mode;
 
 public class ThreadElevator extends Thread {
 

@@ -1,4 +1,4 @@
-package avmasansor;
+package mallelevator;
 
 import java.util.LinkedList;
 

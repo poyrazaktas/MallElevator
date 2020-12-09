@@ -1,4 +1,4 @@
-package avmasansor;
+package mallelevator;
 
 import java.util.LinkedList;
 
@@ -8,14 +8,12 @@ public class Mall {
     int queue;
     LinkedList<Customer> customers;
     String name;
-    int floor;
 
-    Mall(String name, int floor) {
+    Mall(String name) {
         this.name = name;
         this.all = 0;
         this.queue = 0;
         this.customers = new LinkedList<Customer>();
-        this.floor = floor;
     }
 
     public void addCustomer(Customer customer) {
