@@ -154,7 +154,7 @@ public class ThreadElevator extends Thread {
                                         if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
                                             elevator.inside.addLast(customer);
                                             elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            mall[4].all -= elevator.inside.getLast().bodyCount; // hatalı
+                                            // mall[4].all -= elevator.inside.getLast().bodyCount; // hatalı
                                             mall[4].queue -= elevator.inside.getLast().bodyCount;
                                             mall[4].customers.remove(customer);
 
@@ -178,7 +178,7 @@ public class ThreadElevator extends Thread {
                                         if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
                                             elevator.inside.addLast(customer);
                                             elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            mall[3].all -= elevator.inside.getLast().bodyCount;
+                                            // mall[3].all -= elevator.inside.getLast().bodyCount;
                                             mall[3].queue -= elevator.inside.getLast().bodyCount;
                                             mall[3].customers.remove(customer);
 
@@ -202,7 +202,7 @@ public class ThreadElevator extends Thread {
                                         if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
                                             elevator.inside.addLast(customer);
                                             elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            mall[2].all -= elevator.inside.getLast().bodyCount;
+                                            // mall[2].all -= elevator.inside.getLast().bodyCount;
                                             mall[2].queue -= elevator.inside.getLast().bodyCount;
                                             mall[2].customers.remove(customer);
 
@@ -225,7 +225,7 @@ public class ThreadElevator extends Thread {
                                         if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
                                             elevator.inside.addLast(customer);
                                             elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            mall[1].all -= elevator.inside.getLast().bodyCount;
+                                            // mall[1].all -= elevator.inside.getLast().bodyCount;
                                             mall[1].queue -= elevator.inside.getLast().bodyCount;
                                             mall[1].customers.remove(customer);
 
