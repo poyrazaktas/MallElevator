@@ -1,7 +1,5 @@
 package mallelevator;
 
-import mallelevator.Elevator.Mode;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -15,7 +13,8 @@ public class Main {
         ThreadAvmLogin threadAvmLogin = new ThreadAvmLogin("Avm Login Thread", mall);
         ThreadElevator threadFirstElevator = new ThreadElevator("Elevator-1", mall);
         threadFirstElevator.elevator.active = true;
-        //threadFirstElevator.elevator.mode = Mode.WORKING;
+        // ThreadElevator threadSecondElevator = new ThreadElevator("Elevator-2", mall);
+        // threadSecondElevator.elevator.active = true;
         ThreadAvmExit threadAvmExit = new ThreadAvmExit("Avm Exit Thread", mall);
 
         threadAvmLogin.start();
