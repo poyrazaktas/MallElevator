@@ -15,7 +15,7 @@ public class Main {
         ThreadAvmLogin threadAvmLogin = new ThreadAvmLogin("Avm Login Thread", mall);
         ThreadElevator threadFirstElevator = new ThreadElevator("Elevator-1", mall);
         threadFirstElevator.elevator.active = true;
-        threadFirstElevator.elevator.mode = Mode.WORKING;
+        //threadFirstElevator.elevator.mode = Mode.WORKING;
         ThreadAvmExit threadAvmExit = new ThreadAvmExit("Avm Exit Thread", mall);
 
         threadAvmLogin.start();

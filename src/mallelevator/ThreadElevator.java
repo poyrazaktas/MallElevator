@@ -24,7 +24,7 @@ public class ThreadElevator extends Thread {
         System.out.println("Running: " + threadName);
         int exitCount = 0;
         try {
-            Thread.sleep(2000);
+            // Thread.sleep(2000);
             while (elevator.active) {
                 if (elevator.mode == Mode.WORKING) {
                     if (elevator.direction == Direction.UP) {
@@ -254,9 +254,13 @@ public class ThreadElevator extends Thread {
                                 break;
                         }
                     }
-                } // else {
-                  // System.out.println("Elevator mode : IDLE");
-                  // } // else mode = idle
+                } else if (elevator.mode == Mode.IDLE) {
+                    while (mall[0].customers.size() == 0) {
+                        continue;
+                    }
+                    elevator.mode = Mode.WORKING;
+
+                }
 
             }
         } catch (InterruptedException ex) {
