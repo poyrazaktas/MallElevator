@@ -6,6 +6,7 @@ public class Mall {
 
     int all;
     int queue;
+    int exitCount;
     LinkedList<Customer> customers;
     String name;
 
@@ -13,6 +14,7 @@ public class Mall {
         this.name = name;
         this.all = 0;
         this.queue = 0;
+        this.exitCount=0;
         this.customers = new LinkedList<Customer>();
     }
 

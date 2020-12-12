@@ -19,125 +19,124 @@ public class ThreadElevator extends Thread {
         System.out.println("Creating: " + this.threadName);
     }
 
+    public void getIn2Mall(int f) {
+        synchronized (mall[f]) {
+            if (mall[f].customers.size() > 0) {
+                LinkedList<Customer> floor0Ptr = (LinkedList<Customer>) mall[f].customers.clone();
+                for (Customer customer : floor0Ptr) {
+                    if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
+                        elevator.inside.addLast(customer);
+                        elevator.countInside += elevator.inside.getLast().bodyCount;
+
+                        mall[f].customers.remove(customer);
+                    } else { // kuyruk mantığında çalışması için
+                        break;
+                    }
+                }
+
+                mall[f].queue -= elevator.countInside;
+                System.out.println(mall[f]);
+                System.out.println(elevator);
+                elevator.floor++;
+            } else {
+                System.out.println("There is no customer in 0.floor");
+            }
+        }
+
+    }
+
+    public void getOff(int f) {
+        synchronized (mall[f]) {
+            if (elevator.inside.size() > 0) {
+                LinkedList<Customer> insidePtr = (LinkedList<Customer>) elevator.inside.clone();
+                for (Customer customer : insidePtr) {
+                    if (customer.target == f) {
+                        mall[f].all += customer.bodyCount;
+                        elevator.countInside -= customer.bodyCount;
+                        elevator.inside.remove(customer);
+                    }
+                }
+
+                System.out.println(mall[f]);
+                System.out.println(elevator);
+                if (f != 4)
+                    elevator.floor++;
+
+            } else {
+
+                elevator.direction = Direction.DOWN;
+            }
+        }
+
+    }
+
+    public void getIn(int f) {
+        synchronized (mall[f]) {
+            if (mall[f].customers.size() > 0) {
+
+                LinkedList<Customer> floor1Ptr = (LinkedList<Customer>) mall[f].customers.clone();
+                for (Customer customer : floor1Ptr) {
+                    if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
+                        elevator.inside.addLast(customer);
+                        elevator.countInside += elevator.inside.getLast().bodyCount;
+                        // mall[1].all -= elevator.inside.getLast().bodyCount;
+                        mall[f].queue -= elevator.inside.getLast().bodyCount;
+                        mall[f].customers.remove(customer);
+
+                    } else {
+                        break;
+                    }
+                }
+                System.out.println(mall[f]);
+                System.out.println(elevator);
+                elevator.floor--;
+            } else {
+                elevator.floor--;
+            }
+        }
+
+    }
+
     @Override
     public void run() {
         System.out.println("Running: " + threadName);
-        int exitCount = 0;
+        // int exitCount = 0;
         try {
             // Thread.sleep(2000);
-            while (elevator.active) {
-                if (elevator.mode == Mode.WORKING) {
+            while (true) {
+                if (elevator.active && elevator.mode == Mode.WORKING) {
                     if (elevator.direction == Direction.UP) {
                         switch (elevator.floor) {
                             case 0:
                                 Thread.sleep(200);
-                                if (mall[0].customers.size() > 0) {
-                                    LinkedList<Customer> floor0Ptr = (LinkedList<Customer>) mall[0].customers.clone();
-                                    for (Customer customer : floor0Ptr) {
-                                        if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
-                                            elevator.inside.addLast(customer);
-                                            elevator.countInside += elevator.inside.getLast().bodyCount;
 
-                                            mall[0].customers.remove(customer);
-                                        } else { // kuyruk mantığında çalışması için
-                                            break;
-                                        }
-                                    }
-                                    /*
-                                     * // while (elevator.countInside // + mall[0].customers.getFirst().bodyCount <=
-                                     * elevator.capacity) { //
-                                     * elevator.inside.addLast(mall[0].customers.getFirst()); //
-                                     * elevator.countInside += elevator.inside.getLast().bodyCount; //
-                                     * mall[0].customers.removeFirst(); // }
-                                     */
-                                    mall[0].queue -= elevator.countInside;
-                                    System.out.println(mall[0]);
-                                    System.out.println(elevator);
-                                    elevator.floor++;
-                                } else {
-                                    System.out.println("There is no customer in 0.floor");
-                                }
+                                getIn2Mall(0);
+
                                 break;
 
                             case 1:
                                 Thread.sleep(200);
-                                if (elevator.inside.size() > 0) {
-                                    LinkedList<Customer> insidePtr = (LinkedList<Customer>) elevator.inside.clone();
-                                    for (Customer customer : insidePtr) {
-                                        if (customer.target == 1) {
-                                            mall[1].all += customer.bodyCount;
-                                            elevator.countInside -= customer.bodyCount;
-                                            elevator.inside.remove(customer);
-                                        }
-                                    }
 
-                                    System.out.println(mall[1]);
-                                    System.out.println(elevator);
+                                getOff(1);
 
-                                    elevator.floor++;
-                                } else {
-
-                                    elevator.direction = Direction.DOWN;
-                                }
                                 break;
                             case 2:
                                 Thread.sleep(200);
-                                if (elevator.inside.size() > 0) {
-                                    LinkedList<Customer> insidePtr = (LinkedList<Customer>) elevator.inside.clone();
-                                    for (Customer customer : insidePtr) {
-                                        if (customer.target == 2) {
-                                            mall[2].all += customer.bodyCount;
-                                            elevator.countInside -= customer.bodyCount;
-                                            elevator.inside.remove(customer);
-                                        }
-                                    }
-                                    System.out.println(mall[2]);
-                                    System.out.println(elevator);
 
-                                    elevator.floor++;
-                                } else {
+                                getOff(2);
 
-                                    elevator.direction = Direction.DOWN;
-                                }
                                 break;
                             case 3:
                                 Thread.sleep(200);
-                                if (elevator.inside.size() > 0) {
-                                    LinkedList<Customer> insidePtr = (LinkedList<Customer>) elevator.inside.clone();
-                                    for (Customer customer : insidePtr) {
-                                        if (customer.target == 3) {
-                                            mall[3].all += customer.bodyCount;
-                                            elevator.countInside -= customer.bodyCount;
-                                            elevator.inside.remove(customer);
-                                        }
-                                    }
-                                    System.out.println(mall[3]);
-                                    System.out.println(elevator);
 
-                                    elevator.floor++;
-                                } else {
+                                getOff(3);
 
-                                    elevator.direction = Direction.DOWN;
-                                }
                                 break;
                             case 4:
                                 Thread.sleep(200);
-                                if (elevator.inside.size() > 0) {
-                                    LinkedList<Customer> insidePtr = (LinkedList<Customer>) elevator.inside.clone();
-                                    for (Customer customer : insidePtr) {
-                                        if (customer.target == 4) {
-                                            mall[4].all += customer.bodyCount;
-                                            elevator.countInside -= customer.bodyCount;
-                                            elevator.inside.remove(customer);
-                                        }
-                                    }
-                                    System.out.println(mall[4]);
-                                    System.out.println(elevator);
 
-                                } else {
+                                getOff(4);
 
-                                    elevator.direction = Direction.DOWN;
-                                }
                                 break;
 
                             default:
@@ -146,103 +145,38 @@ public class ThreadElevator extends Thread {
                     } else if (elevator.direction == Direction.DOWN) {
                         switch (elevator.floor) {
                             case 4:
-
-                                if (mall[4].customers.size() > 0) {
+                                synchronized (mall[4]) {
                                     Thread.sleep(200);
-                                    LinkedList<Customer> floor4Ptr = (LinkedList<Customer>) mall[4].customers.clone();
-                                    for (Customer customer : floor4Ptr) {
-                                        if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
-                                            elevator.inside.addLast(customer);
-                                            elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            // mall[4].all -= elevator.inside.getLast().bodyCount; // hatalı
-                                            mall[4].queue -= elevator.inside.getLast().bodyCount;
-                                            mall[4].customers.remove(customer);
-
-                                        } else {
-                                            break;
-                                        }
-                                    }
-
-                                    System.out.println(mall[4]);
-                                    System.out.println(elevator);
-                                    elevator.floor--;
-                                } else {
-                                    elevator.floor--;
+                                    getIn(4);
                                 }
+
                                 break;
                             case 3:
-                                if (mall[3].customers.size() > 0) {
+                                synchronized (mall[3]) {
                                     Thread.sleep(200);
-                                    LinkedList<Customer> floor3Ptr = (LinkedList<Customer>) mall[3].customers.clone();
-                                    for (Customer customer : floor3Ptr) {
-                                        if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
-                                            elevator.inside.addLast(customer);
-                                            elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            // mall[3].all -= elevator.inside.getLast().bodyCount;
-                                            mall[3].queue -= elevator.inside.getLast().bodyCount;
-                                            mall[3].customers.remove(customer);
-
-                                        } else {
-                                            break;
-                                        }
-                                    }
-
-                                    System.out.println(mall[3]);
-                                    System.out.println(elevator);
-                                    elevator.floor--;
-                                } else {
-                                    elevator.floor--;
+                                    getIn(3);
                                 }
+
                                 break;
                             case 2:
-                                if (mall[2].customers.size() > 0) {
+                                synchronized (mall[2]) {
                                     Thread.sleep(200);
-                                    LinkedList<Customer> floor2Ptr = (LinkedList<Customer>) mall[2].customers.clone();
-                                    for (Customer customer : floor2Ptr) {
-                                        if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
-                                            elevator.inside.addLast(customer);
-                                            elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            // mall[2].all -= elevator.inside.getLast().bodyCount;
-                                            mall[2].queue -= elevator.inside.getLast().bodyCount;
-                                            mall[2].customers.remove(customer);
-
-                                        } else {
-                                            break;
-                                        }
-                                    }
-                                    System.out.println(mall[2]);
-                                    System.out.println(elevator);
-                                    elevator.floor--;
-                                } else {
-                                    elevator.floor--;
+                                    getIn(2);
                                 }
+
                                 break;
                             case 1:
-                                if (mall[1].customers.size() > 0) {
+                                synchronized (mall[1]) {
                                     Thread.sleep(200);
-                                    LinkedList<Customer> floor1Ptr = (LinkedList<Customer>) mall[1].customers.clone();
-                                    for (Customer customer : floor1Ptr) {
-                                        if (elevator.countInside + customer.bodyCount <= elevator.capacity) {
-                                            elevator.inside.addLast(customer);
-                                            elevator.countInside += elevator.inside.getLast().bodyCount;
-                                            // mall[1].all -= elevator.inside.getLast().bodyCount;
-                                            mall[1].queue -= elevator.inside.getLast().bodyCount;
-                                            mall[1].customers.remove(customer);
-
-                                        } else {
-                                            break;
-                                        }
-                                    }
-                                    System.out.println(mall[1]);
-                                    System.out.println(elevator);
-                                    elevator.floor--;
-                                } else {
-                                    elevator.floor--;
+                                    getIn(1);
                                 }
+
                                 break;
                             case 0:
-                                exitCount += elevator.countInside;
-                                System.out.println("Exit Count: " + Integer.toString(exitCount));
+                                // burada sync gerek yok çünkü boşluğa salıyoruz
+                                mall[0].exitCount += elevator.countInside;
+                                System.out.println("Exit Count: " + Integer.toString(mall[0].exitCount));
+                                System.out.println("---------------------------------------------");
                                 elevator.inside.clear();
                                 elevator.countInside = 0;
                                 elevator.direction = Direction.UP;
