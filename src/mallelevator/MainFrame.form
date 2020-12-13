@@ -137,21 +137,26 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMallCustomers3" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
-                          <Component id="lblMallCustomers4" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
-                          <Component id="lblMallExitCount" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblMallExitCount" alignment="0" pref="435" max="32767" attributes="0"/>
                           <Component id="lblMallQueue2" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblMallQueue1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblMallCustomers0" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
-                          <Component id="lblMallCustomers1" min="-2" pref="434" max="-2" attributes="0"/>
-                          <Component id="lblMallCustomers2" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
+                          <Component id="lblMallQueue0" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblMallQueue3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblMallQueue4" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMallCustomers3" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
+                                  <Component id="lblMallCustomers4" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
+                                  <Component id="lblMallCustomers0" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
+                                  <Component id="lblMallCustomers1" min="-2" pref="434" max="-2" attributes="0"/>
+                                  <Component id="lblMallCustomers2" alignment="0" min="-2" pref="434" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblMallQueue0" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblMallQueue3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblMallQueue4" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -200,17 +205,12 @@
                           </Group>
                           <Component id="jScrollPane3" min="-2" pref="280" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane4" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="jScrollPane2" min="-2" pref="280" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="jScrollPane5" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="120" max="32767" attributes="0"/>

@@ -11,10 +11,8 @@ public class ThreadElevator extends Thread {
     private String threadName;
     Mall[] mall; // avmdeki katlar
     Elevator elevator;
-    public boolean isItWorking=false; //bunu isthreadalive gibi düşün , sadece elle veriyoruz değerini
-    public boolean want2susp=false;
-    
-    
+    public boolean isItWorking = false; // bunu isthreadalive gibi düşün , sadece elle veriyoruz değerini
+    public boolean want2susp = false;
 
     public ThreadElevator(String name, Mall[] mall) {
         this.threadName = name;
@@ -104,23 +102,20 @@ public class ThreadElevator extends Thread {
     @Override
     public void run() {
         System.out.println("Running: " + threadName);
-        
-       
-        
+
         // int exitCount = 0;
         try {
             // Thread.sleep(2000);
-            
-            
+
             while (true) {
-                
-                while(want2susp==true){
-                    if(elevator.countInside!=0)
+
+                while (want2susp == true) {
+                    if (elevator.countInside != 0)
                         break;
-             Thread.sleep(100);
-        }
-                
-                if ( elevator.mode == Mode.WORKING) {
+                    Thread.sleep(100);
+                }
+
+                if (elevator.mode == Mode.WORKING) {
                     if (elevator.direction == Direction.UP) {
                         switch (elevator.floor) {
                             case 0:
