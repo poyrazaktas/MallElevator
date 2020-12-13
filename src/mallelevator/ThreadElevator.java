@@ -40,7 +40,7 @@ public class ThreadElevator extends Thread {
 
                 mall[f].queue -= elevator.countInside;
                 System.out.println(mall[f]);
-                System.out.println(elevator);
+                System.out.println(elevator.insideToString());
                 elevator.floor++;
             } else {
                 System.out.println("There is no customer in 0.floor");
@@ -62,7 +62,7 @@ public class ThreadElevator extends Thread {
                 }
 
                 System.out.println(mall[f]);
-                System.out.println(elevator);
+                System.out.println(elevator.insideToString());
                 if (f != 4)
                     elevator.floor++;
 
@@ -92,7 +92,7 @@ public class ThreadElevator extends Thread {
                     }
                 }
                 System.out.println(mall[f]);
-                System.out.println(elevator);
+                System.out.println(elevator.insideToString());
                 elevator.floor--;
             } else {
                 elevator.floor--;

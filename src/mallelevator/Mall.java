@@ -14,7 +14,7 @@ public class Mall {
         this.name = name;
         this.all = 0;
         this.queue = 0;
-        this.exitCount=0;
+        this.exitCount = 0;
         this.customers = new LinkedList<Customer>();
     }
 
@@ -29,9 +29,10 @@ public class Mall {
     public String toString() {
         if (name.equals("0. floor")) {
             this.all = queue;
-            return name + ":\tqueue: " + Integer.toString(all);
+            return name + ":    queue : " + Integer.toString(all);
         }
-        return name + ":\tall : " + Integer.toString(all) + "\tqueue : " + Integer.toString(queue);
+        return name + ":    all : " + Integer.toString(all) + "    queue : "
+                + Integer.toString(queue);
 
     }
 

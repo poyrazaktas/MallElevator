@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Elevator {
 
     public enum Mode {
-        WORKING, IDLE
+        WORKING, IDLE;
     }
 
     public enum Direction {
@@ -36,7 +36,22 @@ public class Elevator {
 
     @Override
     public String toString() {
-        String result = name+" : ";
+        String insideStr = name + " : ";
+        for (Customer customer : inside) {
+            insideStr += customer.toString() + " ";
+        }
+        String result = name + "\n"
+                + "active : " + active + "\n"
+                + "mode : " + mode.name() + "\n"
+                + "direction : " + direction.name() + "\n"
+                + "capacity : " + Integer.toString(capacity) + "\n"
+                + "count_inside : " + Integer.toString(countInside) + "\n"
+                + "inside : " + insideStr + "\n";
+        return result;
+    }
+
+    public String insideToString() {
+        String result = name + " : ";
         for (Customer customer : inside) {
             result += customer.toString() + " ";
         }
