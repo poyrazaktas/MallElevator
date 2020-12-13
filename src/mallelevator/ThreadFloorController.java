@@ -37,7 +37,7 @@ public class ThreadFloorController implements Runnable {
             threadFirstElevator.elevator.active = true;
             threadFirstElevator.start();
             while (true) {
-                Thread.sleep(3);
+                Thread.sleep(100);
                 labels[0].setText(mall[0].toString());
                 labels[1].setText(mall[1].toString());
                 labels[2].setText(mall[2].toString());

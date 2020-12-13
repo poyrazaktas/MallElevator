@@ -39,16 +39,12 @@ public class Elevator {
         String insideStr = "";
         if (inside.size() >= 0) {
             for (Customer customer : inside) {
-                insideStr += customer.toString() + " ";
+                insideStr += customer + " ";
             }
         }
-        String result = name + "\n"
-                + "active : " + active + "\n"
-                + "mode : " + mode.name() + "\n"
-                + "floor : " + Integer.toString(floor) + "\n"
-                + "direction : " + direction.name() + "\n"
-                + "capacity : " + Integer.toString(capacity) + "\n"
-                + "count_inside : " + Integer.toString(countInside) + "\n"
+        String result = name + "\n" + "active : " + active + "\n" + "mode : " + mode.name() + "\n" + "floor : "
+                + Integer.toString(floor) + "\n" + "direction : " + direction.name() + "\n" + "capacity : "
+                + Integer.toString(capacity) + "\n" + "count_inside : " + Integer.toString(countInside) + "\n"
                 + "inside : " + insideStr + "\n";
         return result;
     }
@@ -57,7 +53,7 @@ public class Elevator {
         String result = name + " : ";
         if (inside.size() >= 0) {
             for (Customer customer : inside) {
-                result += customer.toString() + " ";
+                result += customer + " ";
             }
         }
         return result;
