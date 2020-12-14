@@ -35,6 +35,8 @@ public class ThreadFloorController implements Runnable {
 
         try {
             threadFirstElevator.elevator.active = true;
+            threadFirstElevator.isItWorking = true;
+            threadFirstElevator.want2susp = false;
             threadFirstElevator.start();
             while (true) {
                 Thread.sleep(100);
@@ -73,7 +75,7 @@ public class ThreadFloorController implements Runnable {
 
                         threadSecondElevator.elevator.active = true;
                         threadSecondElevator.want2susp = false;
-                        System.out.println("                                   ->> 2.Asansör Uyandırıldı!");
+                        System.out.println("                                   ->> Elevator-2 Working!");
                     }
 
                 } else if (sumQueues < 20 && threadSecondElevator.elevator.active) {
@@ -102,7 +104,7 @@ public class ThreadFloorController implements Runnable {
 
                         threadThirdElevator.elevator.active = true;
                         threadThirdElevator.want2susp = false;
-                        System.out.println("                                   ->> 3.Asansör Uyandırıldı!");
+                        System.out.println("                                   ->> Elevator-3 Working!");
                     }
 
                 } else if (sumQueues < 30 && threadThirdElevator.elevator.active) {
@@ -131,7 +133,7 @@ public class ThreadFloorController implements Runnable {
 
                         threadFourthElevator.elevator.active = true;
                         threadFourthElevator.want2susp = false;
-                        System.out.println("                                   ->> 4.Asansör Uyandırıldı!");
+                        System.out.println("                                   ->> Elevator-4 Working!!");
                     }
 
                 } else if (sumQueues < 40 && threadFourthElevator.elevator.active) {
@@ -160,7 +162,7 @@ public class ThreadFloorController implements Runnable {
 
                         threadFifthElevator.elevator.active = true;
                         threadFifthElevator.want2susp = false;
-                        System.out.println("                                   ->> 5.Asansör Uyandırıldı!");
+                        System.out.println("                                   ->> Elevator-5 Working!");
                     }
 
                 } else if (sumQueues < 50 && threadFifthElevator.elevator.active) {

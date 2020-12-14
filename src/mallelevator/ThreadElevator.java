@@ -61,7 +61,7 @@ public class ThreadElevator extends Thread {
 
                 System.out.println(mall[f]);
                 System.out.println(elevator.insideToString());
-                if (f != 4)
+                if (f != 4 && elevator.countInside != 0)
                     elevator.floor++;
 
             } else {

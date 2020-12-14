@@ -31,15 +31,14 @@ public class Mall {
             this.all = queue;
             return name + ":    queue : " + Integer.toString(all);
         }
-        return name + ":    all : " + Integer.toString(all) + "    queue : "
-                + Integer.toString(queue);
+        return name + ":    all : " + Integer.toString(all) + "    queue : " + Integer.toString(queue);
 
     }
 
     public String queueToString() {
         String result = name + " : ";
         for (Customer customer : customers) {
-            result += customer.toString() + " ";
+            result += customer + " ";
         }
         return result;
     }
