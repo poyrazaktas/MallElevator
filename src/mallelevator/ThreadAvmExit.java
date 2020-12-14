@@ -20,7 +20,6 @@ public class ThreadAvmExit extends Thread {
         try {
             Random randFloor = new Random();
             Random randCustomer = new Random();
-
             while (true) {
 
                 switch (randFloor.nextInt(4) + 1) {

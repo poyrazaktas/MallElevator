@@ -120,7 +120,6 @@ public class ThreadElevator extends Thread {
                         switch (elevator.floor) {
                             case 0:
                                 Thread.sleep(200);
-
                                 getIn2Mall(0);
 
                                 break;
@@ -156,35 +155,31 @@ public class ThreadElevator extends Thread {
                     } else if (elevator.direction == Direction.DOWN) {
                         switch (elevator.floor) {
                             case 4:
-                                synchronized (mall[4]) {
-                                    Thread.sleep(200);
-                                    getIn(4);
-                                }
+
+                                getIn(4);
 
                                 break;
                             case 3:
-                                synchronized (mall[3]) {
-                                    Thread.sleep(200);
-                                    getIn(3);
-                                }
+
+                                Thread.sleep(200);
+                                getIn(3);
 
                                 break;
                             case 2:
-                                synchronized (mall[2]) {
-                                    Thread.sleep(200);
-                                    getIn(2);
-                                }
+
+                                Thread.sleep(200);
+                                getIn(2);
 
                                 break;
                             case 1:
-                                synchronized (mall[1]) {
-                                    Thread.sleep(200);
-                                    getIn(1);
-                                }
+
+                                Thread.sleep(200);
+                                getIn(1);
 
                                 break;
                             case 0:
                                 // burada sync gerek yok çünkü boşluğa salıyoruz
+                                Thread.sleep(200);
                                 mall[0].exitCount += elevator.countInside;
                                 System.out.println("Exit Count: " + Integer.toString(mall[0].exitCount));
                                 System.out.println("---------------------------------------------");
