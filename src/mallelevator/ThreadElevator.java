@@ -106,6 +106,8 @@ public class ThreadElevator extends Thread {
         // int exitCount = 0;
         try {
             // Thread.sleep(2000);
+            if (this.threadName.equals("Elevator-1"))
+                elevator.mode = Mode.WORKING;
 
             while (true) {
 

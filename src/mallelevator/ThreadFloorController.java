@@ -37,6 +37,8 @@ public class ThreadFloorController implements Runnable {
             threadFirstElevator.elevator.active = true;
             threadFirstElevator.isItWorking = true;
             threadFirstElevator.want2susp = false;
+           
+            
             threadFirstElevator.start();
             while (true) {
                 Thread.sleep(100);

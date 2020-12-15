@@ -37,11 +37,12 @@ public class Elevator {
     @Override
     public String toString() {
         String insideStr = "";
-        if (inside.size() >= 0) {
-            for (Customer customer : inside) {
-                insideStr += customer + " ";
-            }
+        LinkedList<Customer> insidePtr = (LinkedList<Customer>) inside.clone();
+
+        for (Customer customer : insidePtr) {
+            insideStr += customer + " ";
         }
+
         String result = name + "\n" + "active : " + active + "\n" + "mode : " + mode.name() + "\n" + "floor : "
                 + Integer.toString(floor) + "\n" + "direction : " + direction.name() + "\n" + "capacity : "
                 + Integer.toString(capacity) + "\n" + "count_inside : " + Integer.toString(countInside) + "\n"
@@ -51,11 +52,11 @@ public class Elevator {
 
     public String insideToString() {
         String result = name + " : ";
-        if (inside.size() >= 0) {
-            for (Customer customer : inside) {
-                result += customer + " ";
-            }
+        LinkedList<Customer> insidePtr = (LinkedList<Customer>) inside.clone();
+        for (Customer customer : insidePtr) {
+            result += customer + " ";
         }
+
         return result;
     }
 }
